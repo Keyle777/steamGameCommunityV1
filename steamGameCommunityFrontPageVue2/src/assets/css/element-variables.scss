@@ -1,0 +1,14 @@
+/* 改变主题色变量 */
+$--color-primary: #432DCA;
+
+/* 改变 icon 字体路径变量，必需 */
+@font-face {
+  font-family: 'alimama';
+  src: url('../fonts/AlimamaDaoLiTi.woff2') format('woff2'),
+       url('../fonts/AlimamaDaoLiTi.woff') format('woff'),
+       url('../fonts/AlimamaDaoLiTi.ttf') format('truetype');
+  /* 根据字体文件的格式和兼容性需求进行调整 */
+}
+  
+
+@import "../style/theme/index.css";

@@ -3,10 +3,11 @@ import { createPinia, PiniaVuePlugin } from 'pinia';
 
 import App from './App.vue';
 import router from './router';
-import './assets/main.css';
 
+import ElementUI from 'element-ui';
+import './assets/css/element-variables.scss';
 Vue.use(PiniaVuePlugin);
-
+Vue.use(ElementUI);
 new Vue({
 	router,
 	pinia: createPinia(),
