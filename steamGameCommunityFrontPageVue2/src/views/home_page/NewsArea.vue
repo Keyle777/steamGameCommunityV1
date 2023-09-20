@@ -2,13 +2,16 @@
     <div class="container">
         <div class="core-zone">
             <ul>
-                <li v-for="(item, index) in items" :key="index">
+                <li v-for="(item, index) in news" :key="index">
                     <router-link to="#">
-                        <img src="../../assets/img/图片.svg" alt="" />
-                        <span>
-                            {{ item }}
+                        <div class="image-container aperture">
+                            <img :src="item.imgUrl" alt="新闻封面" />
+                        </div>
+                        <span class="headlines">
+                            {{ item.title }}
                         </span>
                     </router-link>
+                    <span class="core-zone-time">发布时间: {{ item.releaseTime }}</span>
                 </li>
             </ul>
         </div>
@@ -22,10 +25,11 @@ export default {
     name: 'NewsArea',
     data() {
         return {
-            items: [
-                '本期给大家安利一款游戏社区APP，名字叫“小黑盒”...',
-                '小黑盒是一款专为游戏玩家定制的...',
-                '支持Steam、Switch、Xbox、PSN平台数据绑定...'
+            news: [
+                {title:"《鸣潮》开发中场景及共鸣者秋水PV 登陆PC及移动端",imgUrl:"/img/news/鸣潮.jpg",releaseTime:"2023年9月20日 22点53分22秒"},
+                {title:"《惊奇队长2》成漫威宇宙投资最小电影",imgUrl:"/img/news/惊奇队长.jpg",releaseTime:"2023年9月20日 22点53分22秒"},
+                {title:"《星球大战绝地：幸存者》若首发登陆Game Pass 微软需支付3亿美元",imgUrl:"/img/news/星球大战绝地.jpg",releaseTime:"2023年9月20日 22点53分22秒"},
+                {title:"《真人快打1》XSX与NS版对比视频 NS版缩水人物呆板",imgUrl:"/img/news/真人快打1.jpg",releaseTime:"2023年9月20日 22点53分22秒"},
             ]
         };
     },
@@ -37,6 +41,16 @@ export default {
 </script>
 
 <style scoped>
+li{
+    position: relative;
+}
+.core-zone-time{
+    position: absolute;
+    top: 83px !important;
+    font-size: 12px !important;
+    cursor: default;
+    left: 114px !important;
+}
 /* 其他样式保持不变 */
 /* 清除浮动带来的影响 */
 .clear-float::after {
@@ -46,12 +60,12 @@ export default {
 }
 
 .container {
-    width: 500px;
-    height: 330px;
-    border: 2px solid rgb(67, 45, 202);
+    width: 600px;
+    height: 440px;
+    border: 5px solid rgb(67, 45, 202);
     border-radius: 20px;
     /* 添加圆角 */
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 
@@ -60,12 +74,19 @@ export default {
     padding-left: 0;
 }
 
+/* 图片容器 */
+.image-container {
+    width: 100px; /* 定义容器的宽度 */
+    height: 100px; /* 定义容器的高度 */
+}
 
-
-.core-zone ul li img {
-    width: 100px;
-    height: 100px;
+/* 图片样式，使用 object-fit 来调整图片尺寸和比例 */
+.image-container img {
+    width: 100%; /* 图片宽度占满容器 */
+    height: 100%; /* 图片高度占满容器 */
+    object-fit: cover; /* 保持图片比例并填充整个容器，可能会裁剪部分图片 */
     vertical-align: middle;
+    border-radius: 10px;
 }
 
 .core-zone ul li:last-child {
@@ -74,10 +95,11 @@ export default {
 
 .core-zone ul li {
     list-style-type: none;
-    margin-top: 10px;
+    margin-top: 8px;
+    margin-left: 10px;
     height: 100px;
     /* 设置高度自动，以便多行文本 */
-    width: 500px;
+    width: 565px;
     position: relative;
 }
 
@@ -94,7 +116,7 @@ export default {
     top: 30px;
     right: 0;
     bottom: 0;
-    font-size: 16px;
+    font-size: 17px;
     overflow: hidden;
 }
 
@@ -122,8 +144,22 @@ export default {
 }
 
 /* 使用伪类选择器添加抖动效果 */
-span:hover {
+li a .headlines:hover {
     animation: shake 1s;
     animation-timing-function: ease-in-out;
+}
+
+
+/* 图片样式，设置初始边框和阴影 */
+.aperture img {
+    border: 2px solid transparent; /* 初始状态下透明边框 */
+    box-shadow: 0 0 0 transparent; /* 初始状态下无阴影 */
+    transition: border-color 0.3s, box-shadow 0.3s; /* 添加渐变效果 */
+}
+
+/* 鼠标悬浮时添加边框和阴影 */
+.aperture:hover img {
+    border-color: rgba(135,206,235, 0.5); /* 设置边框颜色 */
+    box-shadow: 0 0 10px rgba(135,206,235, 0.5); /* 添加阴影效果 */
 }
 </style>
