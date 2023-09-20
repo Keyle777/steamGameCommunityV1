@@ -91,4 +91,31 @@ ul.leftfloat li {
     text-align: center;
     line-height: 40px;
 }
+
+li a {
+    position: relative;
+    /* 让伪元素相对于父元素定位 */
+}
+
+/* ::before意思就是说在a元素之前插入一个元素，这里表示的就是横线效果 */
+li a::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    /* 初始时宽度为0 */
+    height: 3px;
+    /* 横线高度 */
+    background-color: rgb(67, 45, 202);
+    /* 横线颜色 */
+    transition: width 0.3s ease-in-out;
+    /* 宽度动画效果 */
+}
+
+/* 鼠标悬浮时增加宽度 */
+li a:hover::before {
+    width: 100%;
+}
 </style>
