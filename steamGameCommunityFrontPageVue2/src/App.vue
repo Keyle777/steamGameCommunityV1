@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <LayoutPage>
-      <NewsArea />
-      <DiscountArea />
-      <PlayerDiscussionForum />
-    </LayoutPage>
-
+    <LayoutPage />
+    <NewsArea />
+    <DiscountArea />
+    <PlayerDiscussionForum />
   </div>
 </template>
 <script>
