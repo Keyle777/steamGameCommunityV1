@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { ref } from 'vue';
 import { startShake, stopShake } from '../../assets/js/NewsArea';
 
 export default {
@@ -32,6 +31,7 @@ export default {
     },
     methods: {
         startShakeEffect(index) {
+            console.log("Received element:", index);
             startShake(document.querySelectorAll('.shaking')[index]);
         },
         stopShakeEffect(index) {
