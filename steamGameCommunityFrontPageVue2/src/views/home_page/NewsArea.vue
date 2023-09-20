@@ -5,7 +5,7 @@
                 <li v-for="(item, index) in items" :key="index">
                     <router-link to="#">
                         <img src="../../assets/img/图片.svg" alt="" />
-                        <span class="shaking" @mouseover="startShakeEffect(index)" @mouseleave="stopShakeEffect(index)">
+                        <span>
                             {{ item }}
                         </span>
                     </router-link>
@@ -16,8 +16,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { startShake, stopShake } from '../../assets/js/NewsArea';
+
 
 export default {
     name: 'NewsArea',
@@ -31,12 +30,7 @@ export default {
         };
     },
     methods: {
-        startShakeEffect(index) {
-            startShake(document.querySelectorAll('.shaking')[index]);
-        },
-        stopShakeEffect(index) {
-            stopShake(document.querySelectorAll('.shaking')[index]);
-        }
+
     }
 };
 
@@ -104,30 +98,32 @@ export default {
     overflow: hidden;
 }
 
-/* 鼠标悬浮抖动动画 */
+/* 定义抖动动画 */
 @keyframes shake {
-
-    0%,
-    100% {
+    0% {
         transform: translateX(0);
     }
 
-    50% {
+    25% {
         transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }
 
-/* 给具有抖动效果的元素添加动画样式 */
-.shaking {
-    animation: shake 2s infinite;
-    /* 播放 2 秒的动画，并设置为无限循环 */
-    animation-play-state: paused;
-    /* 初始状态下动画暂停 */
-}
-
-/* 新添加的样式，用于悬浮时启动动画 */
-.shaking:hover {
-    animation-play-state: running;
-    /* 悬浮时启动动画 */
+/* 使用伪类选择器添加抖动效果 */
+span:hover {
+    animation: shake 1s;
+    animation-timing-function: ease-in-out;
 }
 </style>
