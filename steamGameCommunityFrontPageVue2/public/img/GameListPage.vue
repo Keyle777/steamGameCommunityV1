@@ -37,7 +37,7 @@
 				@pulldown="loadData"
 			>
 				<template v-if="ListDiscountedGames.length === 0">
-					<el-empty description="请求异常|暂无数据" :image-size="600" image="/img/网络缺省页.svg" style="font-size: 20px;"></el-empty>
+					<el-empty description="暂无数据" :image-size="300" image="../../assets/img/网络缺省页.svg"></el-empty>
 				</template>
 				<template v-else>
 					<ul class="clearFloat" @click="openFullScreen">
@@ -145,7 +145,6 @@ export default {
 </script>
 
 <style scoped>
-
 ul .game-li {
 	display: inline-block;
 	width: 479px;
