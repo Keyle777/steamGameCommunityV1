@@ -1,4 +1,5 @@
 <template>
+	<!-- 新闻区 -->
 	<div class="container">
 		<div class="core-zone">
 			<ul>

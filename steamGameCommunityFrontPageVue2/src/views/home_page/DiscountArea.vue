@@ -1,4 +1,5 @@
 <template>
+	<!-- 折扣区 -->
 	<div class="container left-float">
 		<div class="discount clear-float">
 			<img src="../../assets/img/折扣券.svg" alt="" />

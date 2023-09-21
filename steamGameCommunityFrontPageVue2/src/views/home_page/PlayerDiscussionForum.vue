@@ -1,6 +1,11 @@
 <template>
+	<!-- 玩家评论区 -->
 	<div class="container">
+		<div v-if="discussionContent.length === 0">
+			<el-skeleton :rows="19" animated />
+		</div>
 		<div
+			v-else
 			class="game-discussion"
 			v-for="(content, index) in discussionContent"
 			:key="index"
@@ -31,8 +36,30 @@
 						</div>
 					</router-link>
 					<span class="review">{{ item.review }}</span>
+					<ul>
+						<!-- 未来clicked后面应该是从后端获取的该用户对于每一条评论是否勾选的布尔值，不应该是isClicked，data中不应该存在isClicked -->
+						<li
+							id="like"
+							:class="{ clicked: isClicked, resetting: isResetting }"
+							@click="startAnimation(item.commentId)"
+						></li>
+						<li id="message"></li>
+						<li id="link"></li>
+					</ul>
 					<span class="review-time">{{ item.time }}</span>
 				</div>
+				<el-pagination
+					background
+					:page-sizes="[100, 200, 300, 400]"
+					:page-size="100"
+					layout="total, sizes, prev, pager, next, jumper"
+					:total="1000"
+					@size-change="handleSizeChange"
+					@current-change="handleCurrentChange"
+					:current-page="currentPage4"
+					class="pagination"
+				>
+				</el-pagination>
 			</div>
 		</div>
 	</div>
@@ -51,12 +78,14 @@ export default {
 					},
 					comments: [
 						{
+							commentId: 1,
 							userName: "我是一只小老虎-三国杀",
 							review:
 								"你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你好啊你",
 							time: "2023年9月21日 1:36:21",
 						},
 						{
+							commentId: 2,
 							userName: "可乐不了了-三国杀",
 							review: "你好啊",
 							time: "2023年9月21日 1:36:21",
@@ -71,11 +100,14 @@ export default {
 					},
 					comments: [
 						{
+							commentId: 3,
 							userName: "我是一只小老虎-地平线5",
 							review: "你好啊",
 							time: "2023年9月21日 1:36:21",
+							like: true,
 						},
 						{
+							commentId: 4,
 							userName: "可乐不了了-地平线5",
 							review: "你好啊",
 							time: "2023年9月21日 1:36:21",
@@ -90,11 +122,13 @@ export default {
 					},
 					comments: [
 						{
+							commentId: 5,
 							userName: "我是一只小老虎刺客信条",
 							review: "你好啊",
 							time: "2023年9月21日 1:36:21",
 						},
 						{
+							commentId: 6,
 							userName: "可乐不了了-刺客信条",
 							review: "你好啊",
 							time: "2023年9月21日 1:36:21",
@@ -102,9 +136,71 @@ export default {
 					],
 				},
 			],
+			isClicked: false,
+			isResetting: false,
+			userInfo: {
+				userId: 1,
+				userName: "张三",
+				userAge: 22,
+				userIpAddress: "192.168.0.1",
+				userAddress: "北京",
+			},
+			// 用户评论记录
+			userCommentRecords: [
+				// 用户评论记录
+				{
+					userId: 1,
+					comments: [
+						{
+							// 游戏Id
+							gameId: "1",
+							// 自身评论记录Id
+							commentId: ["1", "2", "3"],
+							// 点了喜欢的评论Id
+							likeCommentId: ["6", "7", "8"],
+						},
+						{
+							// 游戏Id
+							gameId: "2",
+							// 评论记录Id
+							commentId: ["20", "21", "22"],
+							// 点了喜欢的评论Id
+							likeCommentId: ["6", "7", "8", "9"],
+						},
+					],
+				},
+			],
+			currentPage1: 5,
+			currentPage2: 5,
+			currentPage3: 5,
+			currentPage4: 4,
 		};
 	},
-	methods: {},
+	methods: {
+		// commentId:评论id
+		startAnimation(commentId) {
+			this.isClicked = !this.isClicked;
+			// 修改评论与用户关联的那个数据库表
+		},
+		stopAnimation() {
+			this.isClicked = false;
+		},
+		animationComplete() {
+			this.isAnimationComplete = true;
+		},
+		init() {
+			// 请求数据库，根据用户Id和commentId去查评论表，查看记录的like是否为true
+		},
+		handleSizeChange(val) {
+			console.log(`每页 ${val} 条`);
+		},
+		handleCurrentChange(val) {
+			console.log(`当前页: ${val}`);
+		},
+	},
+	mounted() {
+		this.init();
+	},
 };
 </script>
 <style scoped>
@@ -159,8 +255,8 @@ export default {
 	position: relative;
 }
 .user-comment a {
-    display: block;
-    height: 0 !important;
+	display: block;
+	height: 0 !important;
 }
 span {
 	font-size: 16px;
@@ -190,6 +286,7 @@ span {
 .content {
 	height: 100px;
 	position: relative;
+	margin-bottom: 22px;
 }
 
 .review {
@@ -212,14 +309,127 @@ span {
 	position: absolute;
 	left: 70px;
 	top: 33px;
+	opacity: 0.8;
+}
+.userName:hover {
+	opacity: 1;
+}
+.review-time {
+	position: absolute;
+	cursor: text;
+	font-size: 16px;
+	/* left: 1720px; */
+	left: 1680px;
+	top: 35px;
+}
+li {
+	color: #eee;
+}
+/* 评论按钮 */
+#message {
+	color: #eee;
+	position: absolute;
+	top: 95px;
+	left: 120px;
+	width: 30px;
+	height: 30px;
+	background: url(../../assets/img/评论.svg) no-repeat;
+	opacity: 0.5;
+	cursor: pointer;
+}
+#message:hover {
+	opacity: 1;
+}
+@keyframes messageAnimation {
+	0% {
+		background-image: url(../../assets/img/评论.svg); /* 初始状态为原始图像 */
+	}
+	100% {
+		background-image: url(../../assets/img/评论红色.svg); /* 最终状态为另一张图片 */
+	}
 }
 
-.review-time{
-    position: absolute;
-    cursor: text;
-    font-size: 12px;
-	/* left: 1720px; */
-	left: 73px;
-	top: 20px;
+#message:active {
+	animation: messageAnimation 0.1s forwards;
+	opacity: 1;
+}
+
+/* 链接按钮 */
+#link {
+	position: absolute;
+	top: 95px;
+	left: 170px;
+	width: 30px;
+	height: 30px;
+	background: url(../../assets/img/链接.svg) no-repeat;
+	opacity: 0.5;
+	cursor: pointer;
+}
+#link:hover {
+	opacity: 1;
+}
+@keyframes linkAnimation {
+	0% {
+		background-image: url(../../assets/img/链接.svg); /* 初始状态为原始图像 */
+	}
+	100% {
+		background-image: url(../../assets/img/链接红色.svg); /* 最终状态为另一张图片 */
+	}
+}
+
+#link:active {
+	animation: linkAnimation 0.1s forwards;
+	opacity: 1;
+}
+
+/* 点赞按钮 */
+#like {
+	position: absolute;
+	top: 95px;
+	left: 70px;
+	width: 30px;
+	height: 30px;
+	opacity: 0.5;
+	background: url(../../assets/img/点赞.svg) no-repeat;
+	cursor: pointer;
+}
+#like:hover {
+	opacity: 1;
+}
+
+@keyframes likeAnimation {
+	0% {
+		background-image: url(../../assets/img/点赞.svg); /* 初始状态为原始图像 */
+	}
+	100% {
+		background-image: url(../../assets/img/点赞红色.svg); /* 最终状态为另一张图片 */
+	}
+}
+
+@keyframes likeResettingAnimation {
+	0% {
+		background-image: url(../../assets/img/点赞红色.svg); /* 初始状态为原始图像 */
+	}
+	100% {
+		background-image: url(../../assets/img/点赞.svg); /* 最终状态为另一张图片 */
+	}
+}
+
+#like.clicked {
+	animation: likeAnimation 0.5s forwards;
+	opacity: 1;
+}
+#like.resetting {
+	animation: likeResettingAnimation 0.5s forwards;
+	opacity: 0.8;
+}
+
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	bottom: 20px;
+	left: 570px;
 }
 </style>
