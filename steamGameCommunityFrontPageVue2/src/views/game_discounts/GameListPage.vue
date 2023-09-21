@@ -4,8 +4,14 @@
 		<div class="container">
 			<div class="container-search">
 				<form action="#">
-					<input type="text" name="search" id="search" placeholder="我知道一点儿，输入去搜索" class="custom-input"/>
-					<button/>
+					<input
+						type="text"
+						name="search"
+						id="search"
+						placeholder="我知道一点儿，输入去搜索"
+						class="custom-input"
+					/>
+					<button />
 				</form>
 			</div>
 			<!-- 游戏类型 -->
@@ -24,13 +30,19 @@
 				</dl>
 			</div>
 			<!-- 游戏 -->
-			<div class="game">
+			<Scroll
+				class="wrapper"
+				:data="ListDiscountedGames"
+				:pulldown="pulldown"
+				@pulldown="loadData"
+			>
 				<ul class="clearFloat">
 					<li
 						v-for="(game, index) in ListDiscountedGames"
 						:key="game.id"
-						class="leftFloat"
+						class="game-li"
 					>
+						{{ game }}
 						<div class="image-container">
 							<img :src="game.imgUrl" alt="游戏封面" />
 						</div>
@@ -43,68 +55,18 @@
 						<span class="game-title">{{ game.title }}</span>
 					</li>
 				</ul>
-			</div>
-			
+			</Scroll>
 		</div>
 	</div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
 	name: "GameListPage",
 	data() {
 		return {
-			ListDiscountedGames: [
-				{
-					id: "1",
-					title: "《Lies of P》",
-					imgUrl: "/img/《Lies of P》.jpg",
-					price: 128,
-					approvalRating: "99%",
-				},
-				{
-					id: "2",
-					title: "动物园之星",
-					imgUrl: "/img/动物园之星.jpg",
-					price: 33,
-					approvalRating: "99%",
-				},
-				{
-					id: "3",
-					title: "Grand Theft Auto V",
-					imgUrl: "/img/Grand Theft Auto V.jpg",
-					price: 47,
-					approvalRating: "99%",
-				},
-				{
-					id: "4",
-					title: "Grand Theft Auto V",
-					imgUrl: "/img/Grand Theft Auto V.jpg",
-					price: 47,
-					approvalRating: "99%",
-				},
-				{
-					id: "5",
-					title: "Grand Theft Auto V",
-					imgUrl: "/img/Grand Theft Auto V.jpg",
-					price: 47,
-					approvalRating: "99%",
-				},
-				{
-					id: "6",
-					title: "Grand Theft Auto V",
-					imgUrl: "/img/Grand Theft Auto V.jpg",
-					price: 47,
-					approvalRating: "99%",
-				},
-				{
-					id: "7",
-					title: "Grand Theft Auto V",
-					imgUrl: "/img/Grand Theft Auto V.jpg",
-					price: 47,
-					approvalRating: "99%",
-				},
-			],
+			ListDiscountedGames: [],
 			GameTypes: [
 				{ id: "0", name: "FPS" },
 				{ id: "1", name: "RPG" },
@@ -118,6 +80,7 @@ export default {
 			],
 			// 选中的游戏类型Id
 			selectedGameTypes: [], // 添加选中游戏类型的数组
+			pulldown: true,
 		};
 	},
 	methods: {
@@ -137,61 +100,82 @@ export default {
 			// 检查游戏类型是否选中
 			return this.selectedGameTypes.includes(gameTypeId);
 		},
+		loadData() {
+			axios
+				.get("http://localhost:8080/getData")
+				.then((response) => {
+					// 请求成功后，将数据存储到ListDiscountedGames属性中
+					this.ListDiscountedGames = response.data.concat(
+						this.ListDiscountedGames
+					);
+				})
+				.catch((error) => {
+					// 处理请求错误
+					console.error("请求本地数据时出错:", error);
+				});
+		},
+	},
+	created() {
+		this.loadData();
 	},
 };
 </script>
 
 <style scoped>
+ul .game-li{
+	display: inline-block;
+	width: 479px;
+}
 .custom-input::placeholder {
-  /* 在这里定义你想要的样式 */
-  color: #999; /* 更改文本颜色 */
-  font-style: italic; /* 更改字体样式，例如斜体 */
-  font-family: "alimama" !important;
-  /* 添加其他样式，如字体大小、字重等 */
+	/* 在这里定义你想要的样式 */
+	color: #999; /* 更改文本颜色 */
+	font-style: italic; /* 更改字体样式，例如斜体 */
+	font-family: "alimama" !important;
+	/* 添加其他样式，如字体大小、字重等 */
 }
 /* 让.container-search的子代form水平垂直居中 */
 .container-search {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 /* 让form内的子元素也水平居中 */
 .container-search form {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 /* 设置搜索功能的长和宽 */
 #search {
-  width: 600px;
-  height: 40px;
+	width: 600px;
+	height: 40px;
 }
 /* 给按钮添加图片 */
 .container-search button {
-  width: 40px; /* 设置按钮的宽度，这里可以根据需要调整 */
-  height: 40px; /* 设置按钮的高度，与搜索框高度一致 */
-  background: url("/src/assets/img/搜索.svg") no-repeat center center;   /* center center 控制了背景图像的水平和垂直定位 */
-  background-size: contain;/* 使用包含模式，让图片完整显示 */
-  cursor: pointer; /* 控制鼠标悬浮样式 */
-  border: none; /* 无边框 */
-  margin-left: -40px; /* 负边距使按钮与搜索框重合 */
-  transition: border-color 0.3s, box-shadow 0.3s;
+	width: 40px; /* 设置按钮的宽度，这里可以根据需要调整 */
+	height: 40px; /* 设置按钮的高度，与搜索框高度一致 */
+	background: url("/src/assets/img/搜索.svg") no-repeat center center; /* center center 控制了背景图像的水平和垂直定位 */
+	background-size: contain; /* 使用包含模式，让图片完整显示 */
+	cursor: pointer; /* 控制鼠标悬浮样式 */
+	border: none; /* 无边框 */
+	margin-left: -40px; /* 负边距使按钮与搜索框重合 */
+	transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .container-search button:hover {
-  border-color: rgba(67, 45, 202, 0.2);
-  box-shadow: 0 0 10px rgba(67, 45, 202, 0.2);
+	border-color: rgba(67, 45, 202, 0.2);
+	box-shadow: 0 0 10px rgba(67, 45, 202, 0.2);
 }
 
 .container-search input {
-  border-radius: 5px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+	border-radius: 5px;
+	transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .container-search input:focus {
-  border-color: rgba(67, 45, 202, 0.78);
-  box-shadow: 0 0 10px rgba(67, 45, 202, 0.8);
+	border-color: rgba(67, 45, 202, 0.78);
+	box-shadow: 0 0 10px rgba(67, 45, 202, 0.8);
 }
 
 .container {
@@ -252,17 +236,20 @@ dt {
 }
 
 /* 游戏展示 */
-.game {
+.wrapper {
 	position: relative;
 	border: 1px solid orange;
 	margin-top: 50px;
+	height: 620px;
+	overflow: hidden;
 }
-.game ul {
+
+.wrapper ul {
 	padding-left: 0px;
 	position: relative;
 	left: 10px;
 }
-.game li {
+.wrapper li {
 	margin-bottom: 40px;
 }
 .image-container {

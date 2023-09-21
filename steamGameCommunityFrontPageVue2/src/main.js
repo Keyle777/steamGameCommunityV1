@@ -3,12 +3,12 @@ import { createPinia, PiniaVuePlugin } from 'pinia';
 
 import App from './App.vue';
 import router from './router';
-import ElementUI from 'element-ui';
-import VueBetterScroll from "vue2-better-scroll";
+import ElementUI from "element-ui";
 import "./assets/css/element-variables.scss";
+import Scroll from "./components/Scroll.vue";
 
+Vue.component("Scroll", Scroll);
 Vue.use(PiniaVuePlugin);
-Vue.use(VueBetterScroll);
 Vue.use(ElementUI);
 new Vue({
 	router,
