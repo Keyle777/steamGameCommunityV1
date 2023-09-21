@@ -2,6 +2,12 @@
 	<div>
 		<!-- 游戏特惠 -->
 		<div class="container">
+			<div class="container-search">
+				<form action="#">
+					<input type="text" name="search" id="search" placeholder="我知道一点儿，输入去搜索" class="custom-input"/>
+					<button/>
+				</form>
+			</div>
 			<!-- 游戏类型 -->
 			<div class="gameType">
 				<dl class="clearFloat">
@@ -23,19 +29,22 @@
 					<li
 						v-for="(game, index) in ListDiscountedGames"
 						:key="game.id"
-						class="leftFloat aperture"
+						class="leftFloat"
 					>
 						<div class="image-container">
 							<img :src="game.imgUrl" alt="游戏封面" />
 						</div>
 						<div class="price-approvalRating">
 							<span class="game-price">{{ game.price }} 元</span>
-							<span class="game-approvalRating">折扣 {{ game.approvalRating }}</span>
+							<span class="game-approvalRating"
+								>折扣 {{ game.approvalRating }}</span
+							>
 						</div>
 						<span class="game-title">{{ game.title }}</span>
 					</li>
 				</ul>
 			</div>
+			
 		</div>
 	</div>
 </template>
@@ -133,6 +142,58 @@ export default {
 </script>
 
 <style scoped>
+.custom-input::placeholder {
+  /* 在这里定义你想要的样式 */
+  color: #999; /* 更改文本颜色 */
+  font-style: italic; /* 更改字体样式，例如斜体 */
+  font-family: "alimama" !important;
+  /* 添加其他样式，如字体大小、字重等 */
+}
+/* 让.container-search的子代form水平垂直居中 */
+.container-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* 让form内的子元素也水平居中 */
+.container-search form {
+  display: flex;
+  align-items: center;
+}
+/* 设置搜索功能的长和宽 */
+#search {
+  width: 600px;
+  height: 40px;
+}
+/* 给按钮添加图片 */
+.container-search button {
+  width: 40px; /* 设置按钮的宽度，这里可以根据需要调整 */
+  height: 40px; /* 设置按钮的高度，与搜索框高度一致 */
+  background: url("/src/assets/img/搜索.svg") no-repeat center center;   /* center center 控制了背景图像的水平和垂直定位 */
+  background-size: contain;/* 使用包含模式，让图片完整显示 */
+  cursor: pointer; /* 控制鼠标悬浮样式 */
+  border: none; /* 无边框 */
+  margin-left: -40px; /* 负边距使按钮与搜索框重合 */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.container-search button:hover {
+  border-color: rgba(67, 45, 202, 0.2);
+  box-shadow: 0 0 10px rgba(67, 45, 202, 0.2);
+}
+
+.container-search input {
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.container-search input:focus {
+  border-color: rgba(67, 45, 202, 0.78);
+  box-shadow: 0 0 10px rgba(67, 45, 202, 0.8);
+}
+
 .container {
 	width: 1920px;
 	margin: 0 auto;
@@ -201,8 +262,8 @@ dt {
 	position: relative;
 	left: 10px;
 }
-.game li{
-    margin-bottom: 40px;
+.game li {
+	margin-bottom: 40px;
 }
 .image-container {
 	width: 479px; /* 调整容器的宽度，考虑边框的宽度 */
@@ -219,7 +280,7 @@ dt {
 .image-container:hover img {
 	border-color: rgba(67, 45, 202, 0.5); /* 设置边框颜色 */
 	box-shadow: 0 0 10px rgba(67, 45, 202, 0.5); /* 添加阴影效果 */
-    cursor: pointer;
+	cursor: pointer;
 }
 
 dd span {
@@ -232,25 +293,25 @@ li span {
 	font-size: 16px;
 }
 .price-approvalRating {
-    display: flex;
+	display: flex;
 	justify-content: center;
 	width: 479px;
 	height: 24px;
 }
 .price-approvalRating span {
-    font-size: 20px;
+	font-size: 20px;
 }
 .game-price {
-    padding-right: 10px;
-    border-right: 4px solid rgba(67, 45, 202, 0.5);
+	padding-right: 10px;
+	border-right: 4px solid rgba(67, 45, 202, 0.5);
 }
-.game-approvalRating{
-    padding-left: 10px;
+.game-approvalRating {
+	padding-left: 10px;
 }
-.game-title{
-    display: block;
-    text-align: center;
-    font-size: 24px;
+.game-title {
+	display: block;
+	text-align: center;
+	font-size: 24px;
 	font-weight: bold;
 }
 </style>
