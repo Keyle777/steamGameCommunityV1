@@ -36,5 +36,6 @@ html,
 body {
     font-family: "alimama" !important;
     font-size: 0;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
 </style>
