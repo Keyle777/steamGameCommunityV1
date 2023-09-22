@@ -127,7 +127,7 @@ export default {
 		},
 		loadData() {
 			axios
-				.get("http://localhost:8080/getData")
+				.get("https://www.keyle.fun:8081/getData")
 				.then((response) => {
 					// 请求成功后，将数据存储到ListDiscountedGames属性中
 					this.ListDiscountedGames = response.data.concat(
