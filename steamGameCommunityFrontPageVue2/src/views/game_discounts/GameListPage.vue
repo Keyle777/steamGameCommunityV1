@@ -82,6 +82,26 @@ export default {
 				{ id: "6", name: "模拟" },
 				{ id: "7", name: "休闲" },
 				{ id: "8", name: "战略" },
+				{id: '9', name: '塔防'},
+				{id: '10', name: '格斗'},
+				{id: '11', name: '音乐'},
+				{id: '12', name: '角色扮演'},
+				{id: '13', name: '休闲'},
+				{id: '14', name: '卡牌'},
+				{id: '15', name: '冒险'},
+				{id: '16', name: '沙盒'},
+				{id: '17', name: '射击'},
+				{id: '18', name: '恐怖'},
+				{id: '19', name: '动作'},
+				{id: '20', name: '战略'},
+				{id: '21', name: '模拟'},
+				{id: '22', name: '解谜'},
+				{id: '23', name: '益智'},
+				{id: '24', name: '竞速'},
+				{id: '25', name: '体育'},
+				{id: '26', name: '生存'},
+				{id: '27', name: '平台'},
+				{id: '28', name: '策略'}
 			],
 			// 选中的游戏类型Id
 			selectedGameTypes: [], // 添加选中游戏类型的数组
@@ -220,6 +240,9 @@ ul .game-li {
 .gameType {
 	position: relative;
 	border: 1px solid blue;
+}
+.gameType dl{
+	width: 1905px;
 }
 .gameType dl dd,
 dt {
