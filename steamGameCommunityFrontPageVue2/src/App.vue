@@ -4,7 +4,7 @@
 		<!-- <NewsArea />
     <DiscountArea />
     <PlayerDiscussionForum /> -->
-		<GameListPage />
+		<Test />
 	</div>
 </template>
 <script>
@@ -13,6 +13,7 @@ import NewsArea from "./views/home_page/NewsArea.vue";
 import DiscountArea from "./views/home_page/DiscountArea.vue";
 import PlayerDiscussionForum from "./views/home_page/PlayerDiscussionForum.vue";
 import GameListPage from "./views/game_discounts/GameListPage.vue";
+import Test from "./views/game_discounts/Test.vue";
 export default {
 	name: "App",
 	components: {
@@ -21,6 +22,7 @@ export default {
 		DiscountArea,
 		PlayerDiscussionForum,
 		GameListPage,
+		Test,
 	},
 };
 </script>
