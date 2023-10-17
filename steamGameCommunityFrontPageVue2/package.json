@@ -7,6 +7,7 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "apexcharts": "^3.43.0",
     "element-ui": "^2.15.14",
     "pinia": "^2.0.16",
     "vue": "^2.7.7",

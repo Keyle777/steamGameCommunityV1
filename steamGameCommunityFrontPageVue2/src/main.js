@@ -6,7 +6,9 @@ import router from './router';
 import ElementUI from "element-ui";
 import "./assets/css/element-variables.scss";
 import Scroll from "./components/Scroll.vue";
+import ApexChartsPlugin from "./assets/js/apexcharts";
 
+Vue.use(ApexChartsPlugin);
 Vue.component("Scroll", Scroll);
 Vue.use(PiniaVuePlugin);
 Vue.use(ElementUI);
