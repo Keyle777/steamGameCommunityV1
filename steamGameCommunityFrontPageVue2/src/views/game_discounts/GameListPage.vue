@@ -127,7 +127,7 @@ export default {
 		},
 		loadData() {
 			axios
-				.get("https://203.202.236.63:8081/getData")
+				.get("http://203.202.236.63:8082/getData")
 				.then((response) => {
 					// 请求成功后，将数据存储到ListDiscountedGames属性中
 					this.ListDiscountedGames = response.data.concat(
