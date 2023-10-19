@@ -12,11 +12,7 @@ export default {
 	components: {
 		NavigationBar,
 		FootPage,
-	},
-	data() {
-		return {};
-	},
-	methods: {},
+	}
 };
 </script>
 <style>

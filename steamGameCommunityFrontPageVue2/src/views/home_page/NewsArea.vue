@@ -1,25 +1,30 @@
 <template>
-	<!-- 新闻区 -->
-	<div class="container">
-		<div class="core-zone">
-			<ul>
-				<li v-for="(item, index) in news" :key="index">
-					<router-link to="#">
-						<div class="image-container aperture">
-							<img :src="item.imgUrl" alt="新闻封面" />
-						</div>
-						<span class="headlines">
-							{{ item.title }}
-						</span>
-					</router-link>
-					<span class="core-zone-time">发布时间: {{ item.releaseTime }}</span>
-				</li>
-			</ul>
+	<div>
+		<!-- 新闻区 -->
+		<div class="container clear-float">
+			<div class="core-zone">
+				<ul>
+					<li v-for="(item, index) in news" :key="index">
+						<router-link to="#">
+							<div class="image-container aperture">
+								<img :src="item.imgUrl" alt="新闻封面" />
+							</div>
+							<span class="headlines">
+								{{ item.title }}
+							</span>
+						</router-link>
+						<span class="core-zone-time">发布时间: {{ item.releaseTime }}</span>
+					</li>
+				</ul>
+			</div>
 		</div>
+		<DiscountArea />
 	</div>
 </template>
 
 <script>
+import DiscountArea from "../home_page/discountarea.vue";
+
 export default {
 	name: "NewsArea",
 	data() {
@@ -49,7 +54,9 @@ export default {
 			],
 		};
 	},
-	methods: {},
+	components: {
+		DiscountArea,
+	},
 };
 </script>
 

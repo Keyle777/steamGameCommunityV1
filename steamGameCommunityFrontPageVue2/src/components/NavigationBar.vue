@@ -1,49 +1,44 @@
 <template>
-    <!-- 导航栏 -->
     <div>
-        <div class="container">
-            <div class="nav clearfloat">
-                <ul class="leftfloat">
-                    <li>
-                        <router-link to="#">
-                            <img src="../assets/img/首页.svg" alt="首页">
-                            <span>首页</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="#">
-                            <img src="../assets/img/优惠.svg" alt="优惠时刻">
-                            <span>游戏特惠</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="#">
-                            <img src="../assets/img/资讯.svg" alt="资讯时刻">
-                            <span>游戏资讯</span>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="#">
-                            <img src="../assets/img/活跃.svg" alt="活跃玩家">
-                            <span>实时在线</span>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <div class="nav clearfloat">
+          <ul class="leftfloat">
+            <li>
+              <router-link to="/">
+                <img src="../assets/img/首页.svg" alt="首页">
+                <span>首页</span>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/GameListPage">
+                <img src="../assets/img/优惠.svg" alt="优惠时刻">
+                <span>游戏特惠</span>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/资讯">
+                <img src="../assets/img/资讯.svg" alt="资讯时刻">
+                <span>游戏资讯</span>
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/活跃">
+                <img src="../assets/img/活跃.svg" alt="活跃玩家">
+                <span>实时在线</span>
+              </router-link>
+            </li>
+          </ul>
         </div>
+      </div>
+  
+      <router-view></router-view>
     </div>
-</template>
+  </template>
 <script>
+
+
 export default {
-    name: "NavigationBar",
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-
-    },
+    name: "NavigationBar"
 }
 </script>
 <style scoped>
@@ -51,8 +46,8 @@ export default {
     margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: flex-start;
 }
 
 .clearfloat {
