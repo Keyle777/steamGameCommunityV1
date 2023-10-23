@@ -16,13 +16,13 @@
               </router-link>
             </li>
             <li>
-              <router-link to="/资讯">
+              <router-link to="/Information">
                 <img src="../assets/img/资讯.svg" alt="资讯时刻">
                 <span>游戏资讯</span>
               </router-link>
             </li>
             <li>
-              <router-link to="/活跃">
+              <router-link to="/Active">
                 <img src="../assets/img/活跃.svg" alt="活跃玩家">
                 <span>实时在线</span>
               </router-link>

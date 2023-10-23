@@ -18,13 +18,10 @@
 				</ul>
 			</div>
 		</div>
-		<DiscountArea />
 	</div>
 </template>
 
 <script>
-import DiscountArea from "../home_page/discountarea.vue";
-
 export default {
 	name: "NewsArea",
 	data() {
@@ -53,10 +50,7 @@ export default {
 				},
 			],
 		};
-	},
-	components: {
-		DiscountArea,
-	},
+	}
 };
 </script>
 
