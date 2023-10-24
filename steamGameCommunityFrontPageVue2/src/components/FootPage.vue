@@ -18,7 +18,6 @@
   footer {
     color: rgb(240, 113, 218);
     text-align: center;
-    padding: 10px 0;
     font-size: 18px;
     height: 40px;
   }
