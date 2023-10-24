@@ -211,7 +211,7 @@ export default {
 	background-color: #fff;
 	padding: 15px;
 	border: 1px solid #ccc;
-	border-radius: 5px;
+	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	position: relative;
@@ -226,13 +226,14 @@ export default {
 	position: relative; /* 将位置设为相对，以便后续调整右侧位置 */
 	right: 0; /* 将时间置于右侧 */
 	top: 97px;
+	font-style: italic;
 }
 
 .game-discussion {
 	min-height: 300px;
 	background-color: #fff;
 	border: 1px solid #ccc;
-	border-radius: 5px;
+	border-radius: 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	position: relative;
