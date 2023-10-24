@@ -98,7 +98,7 @@ export default {
 							link: "http://www.ithome.com/tag/youxi/",
 						},
 					],
-					timestamp: "今日 14:55",
+					timestamp: "10月23日",
 				},
 				{
 					title:
@@ -126,7 +126,7 @@ export default {
 					imageSrc:
 						"https://img.ithome.com/newsuploadfiles/thumbnail/2023/10/726882_240.jpg?x-bce-process=image/format,f_avif",
 					description:
-						"从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。",
+						"从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。从官方宣传视频可以看到，这不是《糖豆人：终极淘汰赛》添加了《最终幻想 14》的皮肤，而是《最终幻想 14》加入了一个全新玩法。",
 					tags: [
 						{
 							name: "最终幻想 14",
@@ -152,29 +152,29 @@ export default {
 </script>
 
 <style scoped>
-.news-item-link{
+.today {
+	position: relative;
+	top: -23px;
+	left: 1350px;
+	font-style: italic;
+}
+.news-item-link {
 	height: 20px;
 }
 
 .news-tags a {
-  display: inline-block; /* 设置为行内块元素 */
+	display: inline-block; /* 设置为行内块元素 */
 }
 
 .news-tags-timestamp {
-  clear: both; /* 清除浮动 */
-  display: block; /* 让父元素包含子元素 */
-  position: absolute;
-  bottom: -20px;
+	clear: both; /* 清除浮动 */
+	display: block; /* 让父元素包含子元素 */
+	position: absolute;
+	bottom: -20px;
 }
 
 .news-tags {
-  float: left; /* 标签向左浮动 */
-}
-
-.news-timestamp {
-	position: relative;
-	top: -23px;
-	left: 1350px;
+	float: left; /* 标签向左浮动 */
 }
 
 .content-container {
@@ -247,6 +247,13 @@ export default {
 
 .news-description {
 	color: #777;
+	overflow: hidden;
+	/*将对象作为弹性伸缩盒子模型显示*/
+	display: -webkit-box;
+	/*设置子元素排列方式*/
+	-webkit-box-orient: vertical;
+	/*设置显示的行数，多出的部分会显示为...*/
+	-webkit-line-clamp: 3;
 }
 
 .news-tags a {
@@ -254,10 +261,6 @@ export default {
 	text-decoration: none;
 	color: #3498db;
 	font-weight: bold;
-}
-
-.news-timestamp {
-	font-style: italic;
 }
 
 .news-details {
@@ -270,5 +273,11 @@ export default {
 	margin-top: 20px;
 	font-weight: bold;
 	color: #3498db;
+	cursor: pointer;
+	transition: filter 0.3s; /* 添加滤镜过渡效果 */
+}
+
+.load-more:active {
+	filter: brightness(0.8); /* 在点击时减小颜色亮度 */
 }
 </style>
