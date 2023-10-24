@@ -155,9 +155,11 @@ export default {
 .news-item-link{
 	height: 20px;
 }
+
 .news-tags a {
   display: inline-block; /* 设置为行内块元素 */
 }
+
 .news-tags-timestamp {
   clear: both; /* 清除浮动 */
   display: block; /* 让父元素包含子元素 */
@@ -174,8 +176,6 @@ export default {
 	top: -23px;
 	left: 1350px;
 }
-
-
 
 .content-container {
 	font-size: 18px;
