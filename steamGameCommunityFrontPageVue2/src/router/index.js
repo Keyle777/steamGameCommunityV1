@@ -8,7 +8,7 @@ import PopularRankings from "../views/real_time_online/PopularRankings.vue";
 import GameHome from "../views/game_information/GameHome.vue";
 import TopSearch from "../views/game_information/TopSearch.vue";
 const router = new VueRouter({
-	mode: "abstract",
+	mode: "history",
 	base: import.meta.env.BASE_URL,
 	routes: [
 		{
