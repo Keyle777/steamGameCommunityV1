@@ -215,22 +215,33 @@ export default {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	position: relative;
+
+}
+
+.review-time {
+	cursor: text;
+	font-size: 16px;
+	left: 1680px;
+	top: 35px;
+	position: relative; /* 将位置设为相对，以便后续调整右侧位置 */
+	right: 0; /* 将时间置于右侧 */
+	top: 97px;
 }
 
 .game-discussion {
-  min-height: 300px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-  transition: box-shadow 0.3s; /* 添加过渡效果 */
-  margin-bottom: 20px;
-  /* 添加鼠标悬浮时的样式 */
-  &:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
+	min-height: 300px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
+	transition: box-shadow 0.3s; /* 添加过渡效果 */
+	margin-bottom: 20px;
+	/* 添加鼠标悬浮时的样式 */
+	&:hover {
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 }
 
 .image-container {
@@ -327,14 +338,7 @@ span {
 .userName:hover {
 	opacity: 1;
 }
-.review-time {
-	position: absolute;
-	cursor: text;
-	font-size: 16px;
-	/* left: 1720px; */
-	left: 1680px;
-	top: 35px;
-}
+
 li {
 	color: #eee;
 }

@@ -74,7 +74,7 @@ li {
 }
 
 .container {
-	width: 600px;
+	width: 550px;
 	height: 440px;
 	border-radius: 20px;
 	/* 添加圆角 */
