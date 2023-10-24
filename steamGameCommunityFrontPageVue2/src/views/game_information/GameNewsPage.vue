@@ -28,38 +28,37 @@
 		<div class="content">
 			<ul class="news-list">
 				<li class="news-item" v-for="(news, index) in newsItems" :key="index">
-					<a :href="news.link" target="_blank" class="news-image">
-						<img
-							class="image"
-							:alt="news.title"
-							:data-original="news.imageSrc"
-							:src="news.imageSrc"
-						/>
-					</a>
-					<div class="news-content" :data-ot="news.timestamp">
-						<h2 class="news-title">
-							<a
-								:title="news.title"
-								target="_blank"
-								:href="news.link"
-								class="title-link"
-								>{{ news.title }}</a
-							>
-						</h2>
-						<div class="news-description">{{ news.description }}</div>
-						<div class="news-details">
-							<div class="news-tags">
-								<strong>Tags：</strong>
+					<div :href="news.link" target="_blank" class="news-item-link">
+						<div class="news-image-container">
+							<img class="news-image" :src="news.imageSrc" alt="news.title" />
+						</div>
+						<div class="news-content">
+							<h2 class="news-title">
 								<a
-									v-for="(tag, tagIndex) in news.tags"
-									:key="tagIndex"
-									:href="tag.link"
+									:title="news.title"
 									target="_blank"
-									>{{ tag.name }}</a
+									:href="news.link"
+									class="title-link"
+									>{{ news.title }}</a
 								>
-							</div>
-							<div class="news-timestamp">
-								<span class="state today">{{ news.timestamp }}</span>
+							</h2>
+							<div class="news-details">
+								<div class="news-description">{{ news.description }}</div>
+								<div class="news-tags-timestamp">
+									<div class="news-tags">
+										<strong>Tags：</strong>
+										<a
+											v-for="(tag, tagIndex) in news.tags"
+											:key="tagIndex"
+											:href="tag.link"
+											target="_blank"
+											>{{ tag.name }}</a
+										>
+									</div>
+									<div class="news-timestamp">
+										<span class="today">{{ news.timestamp }}</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -153,6 +152,31 @@ export default {
 </script>
 
 <style scoped>
+.news-item-link{
+	height: 20px;
+}
+.news-tags a {
+  display: inline-block; /* 设置为行内块元素 */
+}
+.news-tags-timestamp {
+  clear: both; /* 清除浮动 */
+  display: block; /* 让父元素包含子元素 */
+  position: absolute;
+  bottom: -20px;
+}
+
+.news-tags {
+  float: left; /* 标签向左浮动 */
+}
+
+.news-timestamp {
+	position: relative;
+	top: -23px;
+	left: 1350px;
+}
+
+
+
 .content-container {
 	font-size: 18px;
 	margin: 20px;
@@ -192,10 +216,28 @@ export default {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden; /* 用于包含浮动元素 */
+	position: relative;
+}
+
+.news-image-container {
+	float: left;
+	margin-right: 10px;
+	width: 120px; /* 设置图片容器的宽度 */
+	height: 120px; /* 设置图片容器的高度 */
 }
 
 .news-image {
-	display: block;
+	width: 100%; /* 使用100%宽度以填充图片容器 */
+	height: 100%; /* 使用100%高度以填充图片容器 */
+	object-fit: cover; /* 保持图片比例不产生形变 */
+	border-radius: 10%; /* 设置圆角 */
+}
+
+.news-content {
+	overflow: hidden; /* 用于包含浮动元素 */
+	height: 120px;
+	position: relative;
 }
 
 .news-title {
@@ -217,9 +259,9 @@ export default {
 .news-timestamp {
 	font-style: italic;
 }
+
 .news-details {
-	display: flex;
-    justify-content: space-between;
+	overflow: hidden; /* 用于包含浮动元素 */
 }
 
 .load-more {
