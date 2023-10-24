@@ -203,12 +203,11 @@ img {
 li a span::before {
 	content: "";
 	position: absolute;
-	top: 140px;
-	bottom: 0;
+	bottom: 28px;
 	left: 0;
 	width: 0;
 	/* 初始时宽度为0 */
-	height: 3px;
+	height: 2px;
 	/* 横线高度 */
 	background-color: rgb(67, 45, 202);
 	/* 横线颜色 */
