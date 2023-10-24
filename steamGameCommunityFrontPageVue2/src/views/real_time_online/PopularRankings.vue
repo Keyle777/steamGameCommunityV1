@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<!-- 热门排行榜 -->
-        <ColumnChart/>
+		<ColumnChart />
 		<LineChart />
-        <DatetimeXaxis/>
-        <StocksChart/>
+		<DatetimeXaxis />
+		<StocksChart />
 	</div>
 </template>
 
@@ -17,13 +17,11 @@ export default {
 	name: "PopularRankings",
 	components: {
 		LineChart,
-        ColumnChart,
-        DatetimeXaxis,
-        StocksChart,
+		ColumnChart,
+		DatetimeXaxis,
+		StocksChart,
 	},
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

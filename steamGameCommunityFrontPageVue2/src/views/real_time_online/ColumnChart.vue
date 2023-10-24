@@ -83,10 +83,7 @@ export default {
 	methods: {
 		renderChart() {
 			// 第一个参数为容器，第二个参数为图的配置
-			var chart = new this.$apexcharts(
-				this.$refs.apexcharts,
-				this.options
-			);
+			var chart = new this.$apexcharts(this.$refs.apexcharts, this.options);
 
 			chart.render();
 		},

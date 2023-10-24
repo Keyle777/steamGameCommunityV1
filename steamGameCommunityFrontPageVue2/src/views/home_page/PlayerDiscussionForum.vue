@@ -215,7 +215,6 @@ export default {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	position: relative;
-
 }
 
 .review-time {

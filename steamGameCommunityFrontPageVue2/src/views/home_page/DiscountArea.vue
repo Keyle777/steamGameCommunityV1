@@ -85,7 +85,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 /* 鼠标悬停时添加边框效果 */
 .aperture {

@@ -133,20 +133,20 @@ export default {
 			const blue = 0;
 			return `rgb(${red}, ${green}, ${blue})`;
 		},
-	}
+	},
 };
 </script>
 
 <style scoped>
 /* 样式可以根据需要进行调整 */
 .tab-list {
-    font-size: 16px;
+	font-size: 16px;
 	width: 310px;
 	height: 440px;
 }
 
 .bar {
-    justify-content: space-around;
+	justify-content: space-around;
 	display: flex;
 	list-style: none;
 	padding: 0;

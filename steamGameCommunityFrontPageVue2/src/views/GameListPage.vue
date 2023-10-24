@@ -37,7 +37,11 @@
 				@pulldown="loadData"
 			>
 				<template v-if="ListDiscountedGames.length === 0">
-					<el-empty description="暂无数据" :image-size="300" image="../../assets/img/网络缺省页.svg"></el-empty>
+					<el-empty
+						description="暂无数据"
+						:image-size="300"
+						image="../../assets/img/网络缺省页.svg"
+					></el-empty>
 				</template>
 				<template v-else>
 					<ul class="clearFloat" @click="openFullScreen">

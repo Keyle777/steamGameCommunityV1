@@ -9,7 +9,7 @@ import LayoutPage from "./components/LayoutPage.vue";
 export default {
 	name: "App",
 	components: {
-		LayoutPage
+		LayoutPage,
 	},
 };
 </script>
