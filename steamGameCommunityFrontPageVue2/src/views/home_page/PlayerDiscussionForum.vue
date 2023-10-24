@@ -207,17 +207,30 @@ export default {
 .container {
 	width: 1920px;
 	min-height: 600px;
-	border: 5px solid rgb(67, 45, 202);
-	border-radius: 20px;
 	margin: 20px auto;
+	background-color: #fff;
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
 }
 
 .game-discussion {
-	min-height: 300px;
-	border: 5px solid red;
-	border-radius: 20px;
-	margin: 20px 20px;
-	position: relative;
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.3s; /* 添加过渡效果 */
+  margin-bottom: 20px;
+  /* 添加鼠标悬浮时的样式 */
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .image-container {

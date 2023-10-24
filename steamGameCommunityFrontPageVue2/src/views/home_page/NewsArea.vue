@@ -50,7 +50,7 @@ export default {
 				},
 			],
 		};
-	}
+	},
 };
 </script>
 
@@ -76,10 +76,16 @@ li {
 .container {
 	width: 600px;
 	height: 440px;
-	border: 5px solid rgb(67, 45, 202);
 	border-radius: 20px;
 	/* 添加圆角 */
 	margin-left: 40px;
+	background-color: #fff;
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
 }
 
 .core-zone ul {
