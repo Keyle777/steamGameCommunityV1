@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "apexcharts": "^3.43.0",
+    "axios": "^1.5.1",
+    "better-scroll": "^2.5.1",
     "element-ui": "^2.15.14",
     "pinia": "^2.0.16",
     "vue": "^2.7.7",
