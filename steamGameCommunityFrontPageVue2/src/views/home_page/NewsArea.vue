@@ -86,6 +86,11 @@ li {
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	position: relative;
+	transition: box-shadow 0.3s; /* 添加过渡效果 */
+	/* 添加鼠标悬浮时的样式 */
+	&:hover {
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	}
 }
 
 .core-zone ul {
