@@ -3,7 +3,7 @@
 		<slot></slot>
 	</div>
 </template>
-<script type="text/ecmascript-6">
+<script>
 import BScroll from "@better-scroll/core";
 
   export default {
