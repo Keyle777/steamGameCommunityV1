@@ -7,6 +7,7 @@ import IndexPrePage from "../components/IndexPrePage.vue";
 import PopularRankings from "../views/real_time_online/PopularRankings.vue";
 import GameHome from "../views/game_information/GameHome.vue";
 import TopSearch from "../views/game_information/TopSearch.vue";
+import NewsDetail from "../components/NewsDetail.vue";
 const router = new VueRouter({
 	mode: "history",
 	base: import.meta.env.BASE_URL,
@@ -26,6 +27,10 @@ const router = new VueRouter({
 		{
 			path: "/Active",
 			component: PopularRankings,
+		},
+		{
+			path: "/NewsDetail",
+			component: NewsDetail,
 		},
 	],
 });
