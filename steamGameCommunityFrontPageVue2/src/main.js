@@ -7,9 +7,12 @@ import ElementUI from "element-ui";
 import "./assets/css/element-variables.scss";
 import Scroll from "./components/Scroll.vue";
 import ApexChartsPlugin from "./assets/js/apexcharts";
+import ScrollDown from "./components/ScrollDown.vue";
 
 Vue.use(ApexChartsPlugin);
+Vue.use(ScrollDown);
 Vue.component("Scroll", Scroll);
+Vue.component("ScrollDown", ScrollDown);
 Vue.use(PiniaVuePlugin);
 Vue.use(ElementUI);
 new Vue({

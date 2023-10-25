@@ -38,7 +38,17 @@
 				>
 					{{ game }}
 					<div class="image-container">
-						<img :src="game.imgUrl" alt="游戏封面" />
+						<el-image
+								v-if="!imageError"
+								:src="game.imgUrl"
+								alt="游戏封面"
+								@error="handleImageError"
+							/>
+							<el-image v-else>
+								<div slot="error" class="image-slot-content">
+									<i class="el-icon-picture-outline"></i>
+								</div>
+							</el-image>
 					</div>
 					<div class="price-approvalRating">
 						<span class="game-price">{{ game.price }} 元</span>
