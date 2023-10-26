@@ -39,7 +39,11 @@
 						</div>
 						<div class="news-content">
 							<div class="news-details">
-								<el-skeleton :rows="3" animated style="width: 75vw;height: 140px;margin-top: 13px;" />
+								<el-skeleton
+									:rows="3"
+									animated
+									style="width: 75vw; height: 140px; margin-top: 13px"
+								/>
 							</div>
 						</div>
 					</div>
@@ -51,26 +55,30 @@
 					v-for="(news, index) in newsItems[activeTab]"
 					:key="index"
 				>
-					<div :href="news.link" target="_blank" class="news-item-link">
+					<div class="news-item-link">
 						<div class="news-image-container">
-							<el-image
-								class="news-image"
-								:src="news.imageSrc"
-								alt="news.title"
+							<router-link
+								:title="news.title"
+								class="title-link"
+								:to="{ name: 'newsDetail', params: { id: news.id } }"
 							>
-								<div slot="error" class="image-slot-content">
-									<i class="el-icon-picture-outline"></i>
-								</div>
-							</el-image>
+								<el-image
+									class="news-image"
+									:src="news.imageSrc"
+									:alt="news.title"
+								>
+									<div slot="error" class="image-slot-content">
+										<i class="el-icon-picture-outline"></i>
+									</div>
+								</el-image>
+							</router-link>
 						</div>
 						<div class="news-content">
 							<h2 class="news-title">
-								<a
-									:title="news.title"
-									target="_blank"
-									:href="news.link"
+								<router-link
 									class="title-link"
-									>{{ news.title }}</a
+									:to="{ name: 'newsDetail', params: { id: news.id } }"
+									>{{ news.title }}</router-link
 								>
 							</h2>
 							<div class="news-details">
@@ -110,9 +118,10 @@ export default {
 			newsItems: {
 				"game-news": [
 					{
+						id: "1",
 						title:
 							"《质量效应》新作采用虚幻引擎 5 打造，利用 MetaHuman 工具创建逼真角色",
-						link: "https://www.ithome.com/0/726/886.htm",
+						link: "http://localhost:5173/NewsDetail",
 						imageSrc:
 							"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Fae175b96-62b4-4c48-ae36-a278a8a27e2c%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1700807295&t=6a162877ef7cef6291f0af3ca95f0ae1",
 						description:
@@ -136,6 +145,7 @@ export default {
 				],
 				"game-quick-news": [
 					{
+						id: "1",
 						title:
 							"《质量效应》新作采用虚幻引擎 5 打造，利用 MetaHuman 工具创建逼真角色",
 						link: "https://www.ithome.com/0/726/886.htm",
@@ -160,6 +170,7 @@ export default {
 						timestamp: "2023年10月23日",
 					},
 					{
+						id: "2",
 						title:
 							"索尼 Visual Arts 工作室宣布裁员，曾协助《最后生还者 1》等游戏开发",
 						link: "https://www.ithome.com/0/726/883.htm",
@@ -180,6 +191,7 @@ export default {
 						timestamp: "今日 14:44",
 					},
 					{
+						id: "3",
 						title: "《最终幻想 14》将推大冲关玩法，联动《糖豆人：终极淘汰赛》",
 						link: "https://www.ithome.com/0/726/882.htm",
 						imageSrc:
@@ -338,12 +350,19 @@ export default {
 			this.activeTab = tab;
 			// 在这里可以根据选中的标签进行数据筛选或加载不同的新闻内容
 		},
+		redirectToNewsDetail(newsId) {
+			// 在这个方法中，你可以执行你的操作，比如跳转到 NewsDetail 页面并传递 newsId
+			this.$router.push({ name: "newsDetail", params: { id: newsId } });
+		},
 	},
 	created() {},
 };
 </script>
 
 <style scoped>
+a {
+	cursor: pointer;
+}
 .image-slot-content i {
 	font-size: 120px;
 	/* 设置图标的大小为容器大小 */

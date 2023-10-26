@@ -50,6 +50,8 @@
 
 <script>
 export default {
+    props: ['id'], // 声明props，名为'id'
+	name: "NewsDetail",
 	data() {
 		return {
 			data: {
@@ -114,9 +116,13 @@ export default {
 					},
 				],
 			},
+			newsId: 0,
 		};
 	},
-	computed() {},
+	created() {
+		// 获取路由参数中的 id
+        console.log('News ID:', this.id);
+	},
 };
 </script>
 

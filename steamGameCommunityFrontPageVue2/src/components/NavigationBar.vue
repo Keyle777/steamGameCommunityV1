@@ -27,12 +27,6 @@
 							<span>实时在线</span>
 						</router-link>
 					</li>
-					<li>
-						<router-link to="/NewsDetail">
-							<img src="../assets/img/活跃.svg" alt="游戏详情" />
-							<span>实时在线</span>
-						</router-link>
-					</li>
 				</ul>
 			</div>
 			<div class="time-display">
