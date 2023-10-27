@@ -1,12 +1,27 @@
 <template>
 	<div class="tab-list">
 		<ul class="bar">
-			<li @click="selectTab(4)" :class="{ sel: selectedTab === 4 }">
+			<li
+				@click="selectTab('game-hot')"
+				:class="{ sel: selectedTab === 'game-hot' }"
+			>
 				游戏热榜
 			</li>
-			<li @click="selectTab(1)" :class="{ sel: selectedTab === 1 }">日榜</li>
-			<li @click="selectTab(2)" :class="{ sel: selectedTab === 2 }">周榜</li>
-			<li @click="selectTab(3)" :class="{ sel: selectedTab === 3 }">月榜</li>
+			<li @click="selectTab('daily')" :class="{ sel: selectedTab === 'daily' }">
+				日榜
+			</li>
+			<li
+				@click="selectTab('weekly')"
+				:class="{ sel: selectedTab === 'weekly' }"
+			>
+				周榜
+			</li>
+			<li
+				@click="selectTab('monthly')"
+				:class="{ sel: selectedTab === 'monthly' }"
+			>
+				月榜
+			</li>
 		</ul>
 
 		<ul class="bd order" :id="'d-' + selectedTab">
@@ -25,64 +40,9 @@ export default {
 	name: "TopSearch",
 	data() {
 		return {
-			selectedTab: 4, // 默认选中的标签为周榜
+			selectedTab: "game-hot", // 默认选中的标签为游戏热榜
 			tabContents: {
-				4: [
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
-					{
-						title:
-							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
-						link: "https://www.ithome.com/0/725/061.htm",
-					},
+				"game-hot": [
 					{
 						title:
 							"《英雄联盟》S13 世界赛瑞士轮 10 月 19 日正式开赛，首轮 BLG 对阵 KT",
@@ -90,14 +50,14 @@ export default {
 					},
 					// 添加其他游戏热榜内容
 				],
-				1: [
+				daily: [
 					{
 						title: "彻底告别！MIUI 官微改名为“小米澎湃 OS”",
 						link: "https://www.ithome.com/0/726/742.htm",
 					},
 					// 添加其他日榜内容
 				],
-				2: [
+				weekly: [
 					{
 						title:
 							"小米推出全新操作系统澎湃 OS：小米 14 系列将率先搭载，逐步接替 MIUI",
@@ -105,7 +65,7 @@ export default {
 					},
 					// 添加其他周榜内容
 				],
-				3: [
+				monthly: [
 					{
 						title: "让人羡慕：华为中秋节给员工发 Mate60 手机",
 						link: "https://www.ithome.com/0/722/412.htm",

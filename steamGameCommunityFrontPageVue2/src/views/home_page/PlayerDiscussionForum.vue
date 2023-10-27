@@ -145,31 +145,6 @@ export default {
 				userIpAddress: "192.168.0.1",
 				userAddress: "北京",
 			},
-			// 用户评论记录
-			userCommentRecords: [
-				// 用户评论记录
-				{
-					userId: 1,
-					comments: [
-						{
-							// 游戏Id
-							gameId: "1",
-							// 自身评论记录Id
-							commentId: ["1", "2", "3"],
-							// 点了喜欢的评论Id
-							likeCommentId: ["6", "7", "8"],
-						},
-						{
-							// 游戏Id
-							gameId: "2",
-							// 评论记录Id
-							commentId: ["20", "21", "22"],
-							// 点了喜欢的评论Id
-							likeCommentId: ["6", "7", "8", "9"],
-						},
-					],
-				},
-			],
 			currentPage1: 5,
 			currentPage2: 5,
 			currentPage3: 5,
